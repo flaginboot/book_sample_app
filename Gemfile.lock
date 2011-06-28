@@ -88,6 +88,9 @@ GEM
       railties (~> 3.1.0.rc1)
       sass (>= 3.1.3)
       sprockets (>= 2.0.0.beta.9)
+    spork (0.9.0.rc8)
+    spork-testunit (0.0.5)
+      spork (>= 0.6.0)
     sprockets (2.0.0.beta.10)
       hike (~> 1.0)
       rack (~> 1.0)
@@ -117,6 +120,8 @@ DEPENDENCIES
   minitest
   rails (= 3.1.0.rc4)
   sass-rails (~> 3.1.0.rc)
+  spork (= 0.9.0.rc8)
+  spork-testunit
   sqlite3
   turn
   uglifier

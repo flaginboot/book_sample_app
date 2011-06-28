@@ -1,6 +1,6 @@
 BookSampleApp::Application.routes.draw do
   get "pages/home"
-
+  get 'pages/about'
   get "pages/contact"
 
   # The priority is based upon order of creation:
@@ -60,3 +60,4 @@ BookSampleApp::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+
