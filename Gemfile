@@ -24,6 +24,9 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
+  gem 'minitest'
   # Pretty printed test output
   gem 'turn', :require => false
+  gem 'webrat', '0.7.1'
 end
+
