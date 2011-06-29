@@ -27,5 +27,24 @@ class LayoutLinksTest < ActionDispatch::IntegrationTest
     get '/signup'
     assert_select 'title', /Sign up/
   end
+
+  test "should have the right links on the layout" do
+    get root_path
+
+    get about_path
+    assert_select 'title', /About/
+
+    get help_path
+    assert_select 'title', /Help/
+
+    get contact_path
+    assert_select 'title', /Contact/
+
+    get root_path
+    assert_select 'title', /Home/
+
+    get signup_path
+    assert_select 'title', /Sign up/
+  end
 end
 
