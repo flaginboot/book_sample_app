@@ -22,5 +22,10 @@ class LayoutLinksTest < ActionDispatch::IntegrationTest
     get '/help'
     assert_select 'title', /Help/
   end
+
+  test 'should have a signup page at "/signup"' do
+    get '/signup'
+    assert_select 'title', /Sign up/
+  end
 end
 
