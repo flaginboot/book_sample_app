@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+travis:
+  name: Travis
+  email: trav@wet.com
+
+bobby:
+  name: Bobby
+  email: bHill@gami.com
+
+user_with_duplicated_email:
+  name: timmy
+  email: bHill@gami.com
+
+user_with_duplicated_email_diff_case:
+  name: timmy
+  email: bhiLL@gami.com
+

@@ -23,6 +23,10 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem "annotate", "~> 2.4.0"
+end
+
 group :test do
   gem 'minitest'
   # Pretty printed test output
