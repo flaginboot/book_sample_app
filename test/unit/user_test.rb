@@ -101,5 +101,11 @@ class UserTest < ActiveSupport::TestCase
     mass_assigned.encrypted_password = '1234567'
     assert_equal '1234567', mass_assigned.encrypted_password
   end
+
+  test 'authentication' do
+    User.create(name: 'Undertaker', email: 'deadman@aol.com', password: 'myyard666', password_confirmation: 'myyard666')
+    refute_nil User.authenticate('deadman@aol.com', 'myyard666')
+    assert_nil User.authenticate('deadman@aol.com', 'guessing_pass')
+  end
 end
 

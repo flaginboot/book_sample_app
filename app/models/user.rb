@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
                        length: { within: 6..40 }
 
   before_save :encrypt_password
-  after_save :make_password_nil
+#  after_save :make_password_nil
 
-  def make_password_nil
-    @password = nil
-    password = nil
-  end
+#  def make_password_nil
+#    @password = nil
+#    password = nil
+#  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)
