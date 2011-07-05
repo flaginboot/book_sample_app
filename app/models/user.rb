@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
+#  attr_accessible :name, :email, :password, :password_confirmation
+
+  attr_protected :encrypted_password
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -14,6 +16,12 @@ class User < ActiveRecord::Base
                        length: { within: 6..40 }
 
   before_save :encrypt_password
+  after_save :make_password_nil
+
+  def make_password_nil
+    @password = nil
+    password = nil
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)

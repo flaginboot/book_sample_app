@@ -84,5 +84,14 @@ class UserTest < ActiveSupport::TestCase
   test 'should have a encrypted password' do
     refute @travis.encrypted_password.blank?
   end
+
+  test 'attr_protected' do
+    mass_assigned = User.new name: 'bobby hill', email: 'bobby_hill@aol.com', password: 'i_am_a_fat_kid', password_confirmation: 'i_am_a_fat_kid', encrypted_password: 'i_am_hacking_you'
+    assert_nil mass_assigned.encrypted_password
+    mass_assigned.update_attributes name: 'marky mark', encrypted_password: 'i_am_hacking_you'
+    refute_equal 'i_am_hacking_you', mass_assigned.encrypted_password
+    mass_assigned.encrypted_password = '1234567'
+    assert_equal '1234567', mass_assigned.encrypted_password
+  end
 end
 
