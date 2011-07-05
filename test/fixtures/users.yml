@@ -5,27 +5,8 @@ travis:
   email: trav@wet.com
   encrypted_password: $2a$10$Ut7lLqsfATSrUm0tMh8Fv.51EwflVvzHRON0X7mOkacGsWDxVQHuO
 
-bobby:
+duplicate_email:
   name: Bobby
-  email: bHill@gami.com
-
-no_name:
-  name:
-  email: noname@gmail.com
-
-no_email:
-  name: Mark
-  email:
-
-name_too_long:
-  name: <%= 'a' * 51 %>
-  email: loooooooong@cat.au
-
-duplicated_email:
-  name: timmy
-  email: timmy@gami.com
-
-duplicated_email_diff_case:
-  name: timmy
-  email: Timmy@gami.com
+  email: Bobby@wet.com
+  encrypted_password: $2a$10$Ut7lLqsfATSrUm0tMh8Fv.51EwflVvzHRON0X7mOkacGsWDxVQHuO
 

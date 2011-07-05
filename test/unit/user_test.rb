@@ -12,18 +12,21 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should require a name' do
-    refute users(:no_name).valid?
-    assert_equal ["can't be blank"], users(:no_name).errors[:name]
+    @travis.name = nil
+    refute @travis.valid?
+    assert_equal ["can't be blank"], @travis.errors[:name]
   end
 
   test 'should require a email address' do
-    refute users(:no_email).valid?
-    assert_equal ["can't be blank", "is invalid"], users(:no_email).errors[:email]
+    @travis.email = nil
+    refute @travis.valid?
+    assert_equal ["can't be blank", "is invalid"], @travis.errors[:email]
   end
 
   test 'should reject names that are too long' do
-    refute users(:name_too_long).valid?
-    assert_equal ["is too long (maximum is 50 characters)"], users(:name_too_long).errors[:name]
+    @travis.name = 'a' * 51
+    refute @travis.valid?
+    assert_equal ["is too long (maximum is 50 characters)"], @travis.errors[:name]
   end
 
   test 'should only accept valid email addresses' do
@@ -45,48 +48,53 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should reject duplicate email addresses' do
-    refute users(:duplicated_email).valid?
-    assert_equal ["has already been taken"], users(:duplicated_email).errors[:email]
+    @duplicate_email = users(:duplicate_email)
+#    @duplicate_email.password = 'password'
+#    @duplicate_email.password_confirmation = 'password'
+    @duplicate_email.email = 'trav@wet.com'
+    assert @duplicate_email.invalid?
+    assert_equal ["has already been taken"], @duplicate_email.errors[:email]
   end
 
   test 'should reject email addresses identical up to case' do
-    refute users(:duplicated_email_diff_case).valid?
-    assert_equal ["has already been taken"], users(:duplicated_email_diff_case).errors[:email]
+    @duplicate_email = users(:duplicate_email)
+#    @duplicate_email.password = 'password'
+#    @duplicate_email.password_confirmation = 'password'
+    @duplicate_email.email = 'TRav@wEt.coM'
+    assert @duplicate_email.invalid?
+    assert_equal ["has already been taken"], @duplicate_email.errors[:email]
   end
 
   test 'should require a password' do
-    user = @travis
-    user.password = nil
-    refute user.valid?
+    @travis.password = nil
+    refute @travis.valid?
   end
 
   test 'should require a matching password confirmation' do
-    user = @travis
-    user.password = 'passwerd'
-    user.password_confirmation = 'passwordy'
-    refute user.valid?
+    @travis.password = 'passwerd'
+    @travis.password_confirmation = 'passwordy'
+    refute @travis.valid?
   end
 
   test 'should reject short passwords' do
-    user = @travis
-    user.password = 'pass'
-    user.password_confirmation = 'pass'
-    refute user.valid?
+    @travis.password = 'passy'
+    @travis.password_confirmation = 'passy'
+    refute @travis.valid?
   end
 
   test 'should reject long passwords' do
-    user = @travis
-    user.password = 'a' * 41
-    user.password_confirmation = 'a' * 41
-    refute user.valid?
+    @travis.password = 'a' * 41
+    @travis.password_confirmation = 'a' * 41
+    refute @travis.valid?
   end
 
   test 'should have a encrypted password' do
     refute @travis.encrypted_password.blank?
   end
 
-  test 'attr_protected' do
+  test 'attr_accessible' do
     mass_assigned = User.new name: 'bobby hill', email: 'bobby_hill@aol.com', password: 'i_am_a_fat_kid', password_confirmation: 'i_am_a_fat_kid', encrypted_password: 'i_am_hacking_you'
+
     assert_nil mass_assigned.encrypted_password
     mass_assigned.update_attributes name: 'marky mark', encrypted_password: 'i_am_hacking_you'
     refute_equal 'i_am_hacking_you', mass_assigned.encrypted_password
