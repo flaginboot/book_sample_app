@@ -36,7 +36,7 @@ class UsersControllerTest < ActionController::TestCase
 #    assert_redirected_to action: 'new'
 #  end
 
-  test 'create success should creat a user' do
+  test 'create success should create a user' do
     assert_difference 'User.count', 1 do
       post :create, user: { name: 'tttttt', email: 's@s.com', password: '1234567', password_confirmation: '1234567' }
     end
