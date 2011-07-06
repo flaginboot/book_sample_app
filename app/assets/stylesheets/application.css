@@ -6,16 +6,70 @@
  *= require_tree .
 */
 
-.container {
-  margin: auto;
-  width: 710px;
-}
+﻿/* -*- indent-tabs-mode:nil; tab-width:2; -*- ..for spaces(2) */
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,hr,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,input,textarea,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{padding:0;margin:0;border:0;border-spacing:0;border-collapse:collapse;font-size:100%;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;list-style:none;background:transparent}pre,code{font-family:monospace}input,textarea{vertical-align:middle;font-family:sans-serif}input:focus,textarea:focus{outline:0}article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}
 
+
+/* --------------------------------------------------------------------------
+  Global Stuff
+----------------------------------------------------------------------------- */
+
+/* ------------------------
+ body
+--------------------------- */
 body {
-  font-family: arial, sans-serif;
-  background: #cff;
+  color:              #000;
+  font:               62.5%/1 arial, sans-serif;
+  background:         #cff;
 }
 
+/* ------------------------
+  fonts
+--------------------------- */
+@font-face {
+  font-family:        'Aller-Bold'; /* Reference name */
+  src:                url('fonts/Aller_Bd.eot'); /* IE */
+                      /* If user has font */
+  src:                local('Aller_Bd'),
+                      url('fonts/Aller_Bd.ttf') format('truetype'); /* Everyone else downloads it */
+}
+
+/* ------------------------
+  links
+--------------------------- */
+a:link {
+  color:              #09c;
+  text-decoration:    none;
+}
+a:visited {
+  color:              #069;
+}
+a:hover,
+a:active {
+  color:              #069;
+  text-decoration:    underline;
+}
+a:active {
+  outline:            none;
+}
+
+
+
+/* --------------------------------------------------------------------------
+  Wrapper
+----------------------------------------------------------------------------- */
+#wrapper {
+  width:              710px;
+  margin:             auto;
+  font-size:          15px;
+  overflow:           hidden;
+}
+
+
+
+/* --------------------------------------------------------------------------
+  Header
+----------------------------------------------------------------------------- */
 header {
   padding-top: 20px;
 }
@@ -25,52 +79,20 @@ header img {
   background: #fff;
 }
 
-section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 20px;
-  background: #fff;
-}
-
-section h1 {
-  font-size: 200%;
-}
-
-/* Links */
-
-a {
-  color: #09c;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #069;
-  text-decoration: underline;
-}
-
-a:visited {
-  color: #069;
-}
-
-/* Navigation */
-
+/* ------------------------
+  navigation
+--------------------------- */
 nav {
   float: right;
 }
 
 nav {
-  background-color: white;
+  background: white;
   padding: 0 0.7em;
   white-space: nowrap;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-}
-
 nav ul li {
-  list-style-type: none;
   display: inline-block;
   padding: 0.2em 0;
 }
@@ -89,19 +111,34 @@ nav ul li a:hover {
 }
 
 
+
+/* --------------------------------------------------------------------------
+  Content
+----------------------------------------------------------------------------- */
+#content {
+  margin-top: 1em;
+  font-size: 16px;
+  padding: 20px;
+  background: #fff;
+}
+
+#content h1:first-child {
+  font-size: 36px;
+}
+
+
 /* Sign up button */
 
 a.signup_button {
-  margin-left: auto;
-  margin-right: auto;
   display: block;
-  text-align: center;
   width: 190px;
-  color: #fff;
-  background: #006400;
+  padding: 20px;
+  margin: auto;
   font-size: 150%;
   font-weight: bold;
-  padding: 20px;
+  color: #fff;
+  text-align: center;
+  background: #006400;
 }
 
 /* Round corners */
@@ -112,15 +149,261 @@ a.signup_button {
   border-radius:         10px;
 }
 
+/* --------------------------------------------------------------------------
+  Profile
+----------------------------------------------------------------------------- */
+.profile {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.profile img.gravatar {
+  border: 1px solid #999;
+  margin-bottom: -15px;
+}
+
+/* ------------------------
+  main
+--------------------------- */
+.profile .main {
+  float: left;
+  width: 406px;
+  padding: 1em;
+}
+
+/* ------------------------
+  aside
+--------------------------- */
+.profile aside {
+  float: right;
+  width: 200px;
+  padding: 1em;
+  background: #ffc;
+}
+.profile aside dt {
+  float: left;
+  clear: both;
+  margin: 0 10px 10px 0;
+}
+.profile aside dd {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+
+
+/* --------------------------------------------------------------------------
+  Footer
+----------------------------------------------------------------------------- */
 footer {
-  text-align: center;
-  margin-top: 10px;
   width: 710px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 footer nav {
   float: none;
+}
+
+
+
+/* --------------------------------------------------------------------------
+  Start Vanilla CSS 0.9.7
+----------------------------------------------------------------------------- */
+.formatted {
+  line-height:        1.5;
+}
+.formatted h1,
+.formatted h2,
+.formatted h3,
+.formatted h4,
+.formatted h5,
+.formatted h6,
+.formatted b,
+.formatted strong {
+  font-weight:        bold;
+}
+.formatted pre,
+.formatted code,
+.formatted tt {
+  font:               1em/1.5 'Andale Mono', 'Lucida Console', monospace;
+}
+.formatted pre {
+  white-space:        pre;
+}
+.formatted code {
+  padding:            4px 4px 2px;
+  color:              #eee;
+  background:         #232323;
+}
+.formatted pre code {
+  display:            block;
+  padding:            15px 20px;
+}
+.formatted em,
+.formatted i,
+.formatted dfn {
+  font-style:         italic;
+}
+.formatted dfn {
+  font-weight:        bold;
+}
+.formatted blockquote,
+.formatted ul,
+.formatted ol {
+  margin:             0 1.5em 1.5em 1.5em;
+}
+.formatted li ul,
+.formatted li ol {
+  margin:             0 1.5em;
+}
+.formatted ul,
+.formatted ul li {
+  list-style-type:    disc;
+}
+.formatted ol,
+.formatted ol li {
+  list-style-type:    decimal;
+}
+.formatted p,
+.formatted pre,
+.formatted kbd,
+.formatted dl,
+.formatted table,
+.formatted address {
+  margin:             0 0 1.5em 0;
+}
+.formatted dl dt {
+  font-weight:        bold;
+}
+.formatted dd {
+  margin-left:        1.5em;
+}
+.formatted table {
+  width:              100%;
+}
+.formatted th {
+  font-weight:        bold;
+}
+.formatted th,
+.formatted td,
+.formatted caption {
+  padding:            4px 10px 4px 5px;
+}
+.formatted tfoot {
+  font-style:         italic;
+}
+.formatted sup,
+.formatted sub {
+  line-height:        0;
+  vertical-align:     super;
+}
+.formatted sup {
+  vertical-align:     super;
+}
+.formatted sub {
+  vertical-align:     sub;
+}
+.formatted abbr,
+.formatted acronym {
+  border-bottom:      1px dotted;
+}
+.formatted address {
+  font-style:         italic;
+}
+.formatted del {
+  text-decoration:    line-through;
+}
+.formatted ins {
+  text-decoration:    none;
+}
+.aligncenter {
+  display:            block;
+  margin:             0 auto;
+}
+.alignright {
+  float:              right;
+  margin-left:        10px;
+}
+.alignleft {
+  float:              left;
+  margin-right:       10px;
+}
+/* For modern browsers */
+.clearfix:before,
+.clearfix:after {
+  content:            '';
+  display:            block;
+}
+.clearfix:after {
+  clear:              both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.clearfix {
+  zoom:               1;
+}
+/* --------------------------------------------------------------------------
+  END Vanilla CSS 0.9.7
+----------------------------------------------------------------------------- */
+
+
+
+/* --------------------------------------------------------------------------
+  Non computer monitor styles
+----------------------------------------------------------------------------- */
+@media print {
+  * {
+    background:         transparent !important;
+    color:              #444 !important;
+    text-shadow:        none;
+  }
+  a, a:visited {
+    color:              #444 !important;
+    text-decoration:    underline;
+  }
+  a:after {
+    content:            " (" attr(href) ")";
+  }
+  abbr:after {
+    content:            " (" attr(title) ")";
+  }
+  .ir a:after {
+    content:            '';
+  }
+  pre, blockquote {
+    border:             1px solid #999;
+    page-break-inside:  avoid;
+  }
+  img {
+    page-break-inside:  avoid;
+  }
+  @page {
+    margin:             0.5cm;
+  }
+  p, h2, h3 {
+    orphans:            3;
+    widows:             3;
+  }
+  h2, h3{
+    page-break-after:   avoid;
+  }
+}
+
+/* mobile devices */
+@media all and (orientation:portrait) {
+  /* Style adjustments for portrait mode goes here */
+}
+
+@media all and (orientation:landscape) {
+  /* Style adjustments for landscape mode goes here */
+}
+
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+  /* Prevent iOS, WinMobile from adjusting font size */
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }
 }
 

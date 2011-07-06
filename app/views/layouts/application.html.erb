@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang='en' class='no-js ie6'> <![endif]-->
+<!--[if IE 7 ]>    <html lang='en' class='no-js ie7'> <![endif]-->
+<!--[if IE 8 ]>    <html lang='en' class='no-js ie8'> <![endif]-->
+<!--[if IE 9 ]>    <html lang='en' class='no-js ie9'> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang='en' class='no-js'> <!--<![endif]-->
   <head>
+    <meta charset='UTF-8'>
     <title><%= title %></title>
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='shortcut icon' href='favicon.ico'>
+    <link rel='apple-touch-icon' href='apple-touch-icon.png'>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <script src='js/libs/modernizr-1.7.min.js'></script>
   </head>
-  <body>
-    <div class='container'>
+  <body class='<%= params[:controller] %>'>
+    <div id='wrapper'>
       <%= render 'layouts/header' %>
 
-      <section class='round'>
+      <section id='content' class='round'>
         <%= yield %>
       </section>
 
@@ -21,6 +27,9 @@
 
       <%= debug params if Rails.env.development? %>
     </div>
+    <!-- END div#wrapper -->
   </body>
 </html>
+
+<!-- -*- indent-tabs-mode:nil; tab-width:2; -*- ..for spaces(2) -->
 
